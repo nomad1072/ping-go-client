@@ -6,15 +6,21 @@
 3. It's recommended that your go workspace be split into 3 directories - ```bin, pkg and src``` and the contents in each of them is self-explanatory. A few articles explain how to set this up(https://www.ardanlabs.com/blog/2016/05/installing-go-and-your-workspace.html).
 4. Download the code for this repository by running ```go get -u github.com/nomad1072/ping-go-client```.
 
+# Program setup
+
+1. On linux had to run - ```sudo sysctl -w net.ipv4.ping_group_range="0   2147483647"``` because I'm using UDP as transport.
+2. On Mac, I had to disable csrutil. This can only be done when you restart your mac in recovery mode.  
+
 # Steps to run the program
 
 1. Clone the repository. RUN ```go get -u github.com/nomad1072/ping-go-client```.
-2. ```cd``` into the project directory.
-3. RUN ```go test ./... -v```. You should see ok messages from each test case.
-4. RUN ```go run main.go``` with some optional command line arguments.
-5. Command Line Args: ```-hostname=<ip-or-hostname> -count=<number-of-requests> -ttl=<network-hops>```.
-6. Default values for ```count=20 and ttl=255```.
-7. If testing for an Ipv6 address also specify ```sourceip=<current-host-ipv6-address>```.
+2. RUN ```go get -u ./...``` installs all project dependencies.
+3. ```cd``` into the project directory.
+4. RUN ```go test ./... -v```. You should see ok messages from each test case.
+5. RUN ```go run main.go``` with some optional command line arguments.
+6. Command Line Args: ```-hostname=<ip-or-hostname> -count=<number-of-requests> -ttl=<network-hops>```.
+7. Default values for ```count=20 and ttl=255```.
+8. If testing for an Ipv6 address also specify ```sourceip=<current-host-ipv6-address>```.
 
 # Features Implemented
 
