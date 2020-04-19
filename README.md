@@ -20,8 +20,10 @@
 
 # IPv4
 
-https://imgur.com/MpAf1BH
-
+<img src="https://mybucket-test-openwhisk.s3.amazonaws.com/ipv4.png"
+     alt="Ping IPv4 output" />
+     
 # IPv6
 
-https://imgur.com/gallery/YNs3aSK
+<img src="https://mybucket-test-openwhisk.s3.amazonaws.com/ipv6.png"
+     alt="Ping IPv6 output"/>
