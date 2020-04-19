@@ -1,32 +1,34 @@
 # ping-go-client
 
-# Go installation
-1. Install the go binary from the official site. ```https://golang.org/doc/install```
-2. Add a few environment variables to your ```~/.bash_profile``` file. ```$GOROOT``` should point to your go installation and ```$GOPATH``` should point to your go workspace.
-3. It's recommended that your go workspace be split into 3 directories - ```bin, pkg and src``` and the contents in each of them is self-explanatory. A few articles explain how to set this up(https://www.ardanlabs.com/blog/2016/05/installing-go-and-your-workspace.html).
-4. Download the code for this repository by running ```go get -u github.com/nomad1072/ping-go-client```.
-
-# Program setup
+# Important installation instructions
 
 1. On linux had to run - ```sudo sysctl -w net.ipv4.ping_group_range="0   2147483647"``` because I'm using UDP as transport.
-2. On Mac, I had to disable csrutil. This can only be done when you restart your mac in recovery mode.  
-
-# Steps to run the program
-
-1. Clone the repository. RUN ```go get -u github.com/nomad1072/ping-go-client```.
-2. RUN ```go get -u ./...``` installs all project dependencies.
-3. ```cd``` into the project directory.
-4. RUN ```go test ./... -v```. You should see ok messages from each test case.
-5. RUN ```go run main.go``` with some optional command line arguments.
-6. Command Line Args: ```-hostname=<ip-or-hostname> -count=<number-of-requests> -ttl=<network-hops>```.
-7. Default values for ```count=20 and ttl=255```.
-8. If testing for an Ipv6 address also specify ```sourceip=<current-host-ipv6-address>```.
+2. On Mac, disable csrutil since the new OS(El Capitan and beyond) ship with System Integrity Protection(SIP). This can only be done when you restart your mac in recovery mode(hold the command+R key when you restart). Once you are in recovery mode open the terminal app and run ```csrutil disable```. Please remember to enable this back ```csrutil enable```.
 
 # Features Implemented
 
-1. Setup ttl to restrict the transfer of packets to a set number of network hops.
-2. Each request reports the number of bytes received, the destination ip and Round trip time(RTT).
-3. Count feature as mentioned in ping man page to restrict the number of icmp requests to this variable.
+- Setup ttl to restrict the transfer of packets to a set number of network hops.
+- Support for both IPv4 and IPv6 addresses.
+- Each request reports the number of bytes received, the destination ip and Round trip time(RTT).
+- Count feature as mentioned in ping man page to restrict the number of icmp requests to be made against the remote host to a fixed number.
+
+# Instructions to clone
+
+1. ```cd $GOPATH/src``` (Note: See here for environment variables set up, and for general [Go installation instructions](#go-installation))
+2. ```mkdir -p github.com/nomad1072```
+3. ```cd github.com/nomad1072```
+4. ```git clone https://github.com/nomad1072/ping-go-client.git```
+
+# Instruction to test
+
+1. ```cd $GOPATH/src/github.com/nomad1072/ping-go-client ```
+2. Fetch  the necessary dependencies by running: ```go get -u ./...```
+3. Run tests: ```go test ./... -v```
+
+# Command Line Arguments
+
+- Command Line Args: ```go run main.go -hostname=<ip-or-hostname> -count=<number-of-requests> -ttl=<network-hops>```.
+- If testing for an Ipv6 address also specify ```sourceip=<current-host-ipv6-address>```.
 
 # Output
 
@@ -39,3 +41,9 @@
 
 <img src="https://mybucket-test-openwhisk.s3.amazonaws.com/ipv6.png"
      alt="Ping IPv6 output"/>
+     
+# Go installation
+1. Install the go binary from the official site. ```https://golang.org/doc/install```
+2. Add the ```$GOROOT``` and ```$GOPATH``` environment variables to your ```~/.bash_profile``` file. 
+- ```$GOROOT``` should point to your go installation which is ```/usr/local/go``` 
+- ```$GOPATH``` which should point to the workspace that the project will use, to store the sources and the dependencies. Inside the directory represented by GOPATH, make sure you have the following three directories: bin, pkg, and src. 
