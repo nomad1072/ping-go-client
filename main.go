@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/nomad1072/ping/ping"
+	"github.com/nomad1072/ping-go-client/ping"
 )
 
 func fetchArgs() (string, int, int, string) {
