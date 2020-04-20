@@ -9,9 +9,9 @@ import (
 // Ping send an ICMP Echo request to a given host with
 // set count specifying number of requests and ttl
 // specifies the maximum network hops
-func Ping(address string, count int, ttl int, sourceIpv6 string) {
+func Ping(address string, count int, ttl int) {
 	// Listen for icmp packets
-	connection, iptype := prepareConnection(address, ttl, sourceIpv6)
+	connection, iptype := prepareConnection(address, ttl)
 	defer connection.Close()
 	println("Ip Type: ", iptype)
 	// Resolve IP to hostname

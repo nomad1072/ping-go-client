@@ -18,7 +18,7 @@ func ipType(address string) string {
 	return "invalid"
 }
 
-func prepareConnection(address string, ttl int, sourceIpv6 string) (*icmp.PacketConn, string) {
+func prepareConnection(address string, ttl int) (*icmp.PacketConn, string) {
 	iptype := ipType(address)
 	var connection *icmp.PacketConn
 
@@ -28,7 +28,7 @@ func prepareConnection(address string, ttl int, sourceIpv6 string) (*icmp.Packet
 		connection.IPv4PacketConn().SetTTL(ttl)
 		return connection, iptype
 	} else if iptype == "ipv6" {
-		connection, _ = icmp.ListenPacket("udp6", sourceIpv6)
+		connection, _ = icmp.ListenPacket("udp6", "::")
 		connection.IPv6PacketConn().SetControlMessage(ipv6.FlagHopLimit, true)
 		connection.IPv6PacketConn().SetHopLimit(ttl)
 		return connection, iptype

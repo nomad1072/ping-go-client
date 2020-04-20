@@ -32,23 +32,23 @@ func validateArgs(count int, ip string, ttl int) (string, bool) {
 	return "All arguments valid", true
 }
 
-func fetchArgs() (string, int, int, string) {
+func fetchArgs() (string, int, int) {
 	var ip = flag.String("hostname", "cloudflare.com", "The ip or the hostname")
 	var count = flag.Int("count", math.MaxInt64, "Number of requests to be made")
 	var ttl = flag.Int("ttl", 255, "Number of network hops")
-	var sourceIP = flag.String("sourceip", "2601:281:8380:3570:f4db:2ca7:3f8f:a109", "Specify source IP for IPv6")
+	// var sourceIP = flag.String("sourceip", "2601:281:8380:3570:f4db:2ca7:3f8f:a109", "Specify source IP for IPv6")
 
 	flag.Parse()
 	// var address = "2001:4860:4860::8888"
-	return *ip, *count, *ttl, *sourceIP
+	return *ip, *count, *ttl
 }
 
 func main() {
-	ip, count, ttl, sourceIpv6 := fetchArgs()
+	ip, count, ttl := fetchArgs()
 	message, ok := validateArgs(count, ip, ttl)
 	println("Message: ", message)
 
 	if ok {
-		ping.Ping(ip, count, ttl, sourceIpv6)
+		ping.Ping(ip, count, ttl)
 	}
 }

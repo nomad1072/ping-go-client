@@ -12,7 +12,7 @@ func TestArgs(t *testing.T) {
 	os.Args = append(os.Args, "-count=50")
 
 	t.Run("testCommandLineArgs", func(t *testing.T) {
-		actualHostname, actualCount, _, _ := fetchArgs()
+		actualHostname, actualCount, _ := fetchArgs()
 		if actualHostname != expectedHostname {
 			t.Errorf("Test failed, expected: '%s', got: '%s'", expectedHostname, actualHostname)
 		}
