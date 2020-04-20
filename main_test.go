@@ -39,7 +39,7 @@ func TestArgs(t *testing.T) {
 
 	t.Run("validateCommandLineArgs", func(t *testing.T) {
 		message, _ := validateArgs(-1, "google.com", 34)
-		wrongHostName := "count accepts positive integers"
+		wrongHostName := "count does not accept negative integers"
 		if message != wrongHostName {
 			t.Errorf("Test failed, provided incorrect count value but client accepts given value")
 		}

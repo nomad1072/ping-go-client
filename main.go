@@ -26,7 +26,7 @@ func validateArgs(count int, ip string, ttl int) (string, bool) {
 	}
 
 	if count < 0 {
-		return "count accepts positive integers", false
+		return "count does not accept negative integers", false
 	}
 
 	return "All arguments valid", true
