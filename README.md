@@ -29,9 +29,9 @@
 
 - Command Line Args: ```go run main.go -hostname=<ip-or-hostname> -count=<number-of-requests> -ttl=<network-hops>```.
 - ```hostname``` is a mandatory argument. ```count``` and ```ttl``` are optional arguments.
-- If testing for an Ipv6 address also specify ```sourceip=<current-host-ipv6-address>```.
 - Sample request - 1. ```go run main.go -hostname=cloudflare.com```
 - Sample request - 2. ```go run main.go -hostname=cloudflare.com -ttl=57 -count=10``` 
+- Sample request - 3. ```go run main.go -hostname=2001:4860:4860::8888```
 
 # Output
 
