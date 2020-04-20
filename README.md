@@ -2,10 +2,10 @@
 
 # Features Implemented
 
-- Setup ttl to restrict the transfer of packets to a set number of network hops.(Extra Credit)
-- Support for both IPv4 and IPv6 addresses.(Extra Credit)
 - Each request reports the number of bytes received, the destination ip and Round trip time(RTT).
-- Count feature as mentioned in ping man page to restrict the number of icmp requests to be made against the remote host to a fixed number.(Extra Credit)
+- **(Extra Credit)** Setup ttl to restrict the transfer of packets to a set number of network hops.
+- **(Extra Credit)** Support for both IPv4 and IPv6 addresses.
+- **(Extra Credit)** Count feature as mentioned in ping man page to restrict the number of icmp requests to be made against the remote host to a fixed number.
 
 # Important installation instructions
 
