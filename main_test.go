@@ -22,7 +22,15 @@ func TestArgs(t *testing.T) {
 	})
 
 	t.Run("validateCommandLineArgs", func(t *testing.T) {
-		message, _ := validateArgs(-1, "googkle.com")
+		message, _ := validateArgs(-1, "googkle.com", 34)
+		wrongHostName := "invalid IP address/hostname provided"
+		if message != wrongHostName {
+			t.Errorf("Test failed, provided incorrect hostname but received ambiguous output")
+		}
+	})
+
+	t.Run("NegativeIPInput=-27838838383", func(t *testing.T) {
+		message, _ := validateArgs(-1, "-27838838383", 34)
 		wrongHostName := "invalid IP address/hostname provided"
 		if message != wrongHostName {
 			t.Errorf("Test failed, provided incorrect hostname but received ambiguous output")
@@ -30,10 +38,26 @@ func TestArgs(t *testing.T) {
 	})
 
 	t.Run("validateCommandLineArgs", func(t *testing.T) {
-		message, _ := validateArgs(-1, "google.com")
+		message, _ := validateArgs(-1, "google.com", 34)
 		wrongHostName := "count accepts positive integers"
 		if message != wrongHostName {
 			t.Errorf("Test failed, provided incorrect count value but client accepts given value")
+		}
+	})
+
+	t.Run("InvalidTTLValue=-38", func(t *testing.T) {
+		message, _ := validateArgs(-1, "-27838838383", -34)
+		wrongHostName := "invalid value specified for ttl"
+		if message != wrongHostName {
+			t.Errorf("Test failed, provided incorrect hostname but received ambiguous output")
+		}
+	})
+
+	t.Run("InvalidTTLValue=289", func(t *testing.T) {
+		message, _ := validateArgs(-1, "-27838838383", 289)
+		wrongHostName := "invalid value specified for ttl"
+		if message != wrongHostName {
+			t.Errorf("Test failed, provided incorrect hostname but received ambiguous output")
 		}
 	})
 }

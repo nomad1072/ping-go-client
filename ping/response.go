@@ -15,14 +15,13 @@ func processResponseIPv4(connection *icmp.PacketConn, sequence int) {
 	start := time.Now()
 	n, peer, _, err := connection.IPv4PacketConn().ReadFrom(rb)
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println("Request timeout for icmp_seq ", sequence)
+		return
 	}
-
 	rm, err := icmp.ParseMessage(ipv4.ICMPTypeEcho.Protocol(), rb[:n])
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	switch rm.Type {
 	case ipv4.ICMPTypeEchoReply:
 		duration := time.Since(start)
@@ -36,7 +35,7 @@ func processResponseIPv4(connection *icmp.PacketConn, sequence int) {
 func processResponseIPv6(connection *icmp.PacketConn, sequence int) {
 	rb := make([]byte, 1500)
 	start := time.Now()
-	n, peer, peer1, err := connection.IPv6PacketConn().ReadFrom(rb)
+	n, peer, _, err := connection.IPv6PacketConn().ReadFrom(rb)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -49,7 +48,7 @@ func processResponseIPv6(connection *icmp.PacketConn, sequence int) {
 	switch rm.Type {
 	case ipv6.ICMPTypeEchoReply:
 		duration := time.Since(start)
-		fmt.Printf("Received %v bytes from %v  icmp_seq=%v ttl=%v time=%v peer1=%v", n, peer, sequence, peer.HopLimit, duration, peer1)
+		fmt.Printf("Received %v bytes from %v  icmp_seq=%v ttl=%v time=%v", n, peer.Src, sequence, peer.HopLimit, duration)
 		fmt.Println()
 	default:
 		log.Printf("got %+v; want echo reply", rm.Type)
