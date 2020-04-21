@@ -7,17 +7,13 @@
 - **(Extra Credit)** Support for both IPv4 and IPv6 addresses.
 - **(Extra Credit)** Count feature as mentioned in ping man page to restrict the number of icmp requests to be made against the remote host to a fixed number.
 
-# Important installation instructions
-
-1. On linux had to run - ```sudo sysctl -w net.ipv4.ping_group_range="0   2147483647"``` because I'm using UDP as transport.
-2. On Mac, disable csrutil since the new OS(El Capitan and beyond) ship with System Integrity Protection(SIP). This can only be done when you restart your mac in recovery mode(hold the command+R key when you restart). Once you are in recovery mode open the terminal app and run ```csrutil disable```. Please remember to enable this back ```csrutil enable```.
-
 # Instructions to clone
 
 1. ```cd $GOPATH/src``` (Note: See here for environment variables set up, and for general [Go installation instructions](#go-installation))
 2. ```mkdir -p github.com/nomad1072```
 3. ```cd github.com/nomad1072```
 4. ```git clone https://github.com/nomad1072/ping-go-client.git```
+5. Additional setup maybe needed depending on the OS. [Please look here](#important-installation-instructions)
 
 # Instruction to test
 
@@ -49,4 +45,9 @@
 1. Install the go binary from the official site. ```https://golang.org/doc/install```
 2. Add the ```GOROOT``` and ```GOPATH``` environment variables to your ```~/.bash_profile``` file. 
 - ```GOROOT``` should point to your go installation which is ```/usr/local/go``` 
-- ```GOPATH``` which should point to the workspace that the project will use, to store the sources and the dependencies. Inside the directory represented by GOPATH, make sure you have the following three directories: bin, pkg, and src. 
+- ```GOPATH``` which should point to the workspace that the project will use, to store the sources and the dependencies. Inside the directory represented by GOPATH, make sure you have the following three directories: bin, pkg, and src.
+
+# Important installation instructions
+
+1. On linux had to run - ```sudo sysctl -w net.ipv4.ping_group_range="0   2147483647"``` because I'm using UDP as transport.
+2. On Mac, disable csrutil since the new OS(El Capitan and beyond) ship with System Integrity Protection(SIP). This can only be done when you restart your mac in recovery mode(hold the command+R key when you restart). Once you are in recovery mode open the terminal app and run ```csrutil disable```. Please remember to enable this back ```csrutil enable```.
