@@ -3,9 +3,9 @@
 # Features Implemented
 
 - Each request reports the number of bytes received, the destination ip and Round trip time(RTT).
-- **(Extra Credit)** Setup ttl to restrict the transfer of packets to a set number of network hops.
-- **(Extra Credit)** Support for both IPv4 and IPv6 addresses.
-- **(Extra Credit)** Count feature as mentioned in ping man page to restrict the number of icmp requests to be made against the remote host to a fixed number.
+- Setup ttl to restrict the transfer of packets to a set number of network hops.
+- Support for both IPv4 and IPv6 addresses.
+- Count feature as mentioned in ping man page to restrict the number of icmp requests to be made against the remote host to a fixed number.
 
 # Instructions to clone
 
@@ -15,7 +15,7 @@
 4. ```git clone https://github.com/nomad1072/ping-go-client.git```
 5. Additional setup maybe needed depending on the OS. [Please look here](#important-installation-instructions)
 
-# Instruction to test
+# Instructions to test
 
 1. ```cd $GOPATH/src/github.com/nomad1072/ping-go-client ```
 2. Fetch  the necessary dependencies by running: ```go get -u ./...```
